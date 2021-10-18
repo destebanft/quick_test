@@ -12,12 +12,11 @@ Tel: +57 320 251 1039
 - Database: Postgres
 - Docker: Docker-compose
 
-Mediante docker compose se ejecuta postgres, django y un proxy(nginx), lo configure para que todas las peticiones y conexiones se hagan mediante el proxy. Con el sofware _Postman_ probé los endpoints.
 
 ### Endpoints (_Postman_):
 
 - http://127.0.0.1:5500/api/v1/users/login/ Inicio de sesión, obtiene el access token y el refresh token para las rutas privatas (POST)
-- http://127.0.0.1:5500/api/v1/user/ Crear usuarios (POST)
+- http://127.0.0.1:5500/api/v1/user/0/ Crear usuarios (POST)
 - http://127.0.0.1:5500/api/v1/user/5/ Actualizar usuario (PUT)
 - http://127.0.0.1:5500/api/v1/user/5/ Eliminar usuario (DELETE)
 - http://127.0.0.1:5500/api/properties/assign_owners asignar propietarios a las propiedades (POST)
@@ -32,7 +31,7 @@ Mediante docker compose se ejecuta postgres, django y un proxy(nginx), lo config
 
 ![alt text](./pgAdmin.png)
 
-5. Importe el archivo data_backup dentro de la base de datos data. Enviado al correo.
-
-6. En archivo quick.postman_collection.json están las peticiones para hacer pruebas en el api mediante el software postman. Enviado al correo.
+5. Importe el archivo data dentro de la base de datos data. Enviado al correo.
+6. En la terminal _django@a0cc19f5f07b:/workspace$_ ejecute el comando _python api/manage.py runserver 5500_.
+7. En archivo quick.postman_collection.json están las peticiones para hacer pruebas en el api mediante el software _Postman_. Enviado al correo.
 
