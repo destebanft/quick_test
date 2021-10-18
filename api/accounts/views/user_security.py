@@ -22,12 +22,13 @@ class UserSecurityView(APIView):
 
 
 	@error_handler
-	def post(self, request):
+	def post(self, request, id=None):
 		username = request.data.get('email', None)
 		password = request.data.get('password', None)
 		email = request.data.get('email', None)
 		first_name = request.data.get('first_name', None)
 		last_name = request.data.get('last_name', None)
+		phone_number = request.data.get('mobile_phone', None)
 
 		try:
 			user = AuthUser.objects.create_user(
@@ -35,7 +36,8 @@ class UserSecurityView(APIView):
 				password=password,
 				email=email,
 				first_name = first_name,
-				last_name = last_name
+				last_name = last_name,
+				phone_number = phone_number
 			)
 		except IntegrityError:
 			return ResponseError("user_with_given_username_already_exists", status.HTTP_400_BAD_REQUEST)
