@@ -14,7 +14,7 @@ Tel: +57 320 251 1039
 
 Mediante docker compose se ejecuta postgres, django y un proxy(nginx), lo configure para que todas las peticiones y conexiones se hagan mediante el proxy. Con el sofware _Postman_ probé los endpoints.
 
-Cree 5 endpoints:
+### Endpoints (_Postman_):
 
 - http://127.0.0.1:5500/api/v1/users/login/ Inicio de sesión, obtiene el access token y el refresh token para las rutas privatas (POST)
 - http://127.0.0.1:5500/api/v1/user/ Crear usuarios (POST)
@@ -35,5 +35,4 @@ Cree 5 endpoints:
 5. Importe el archivo data_backup dentro de la base de datos data. Enviado al correo.
 
 6. En archivo quick.postman_collection.json están las peticiones para hacer pruebas en el api mediante el software postman. Enviado al correo.
-
 
