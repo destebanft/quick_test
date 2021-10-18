@@ -43,7 +43,6 @@ class LoginView(APIView, TokenView):
 						'email': auth_user.email,
 						'mobile_phone': auth_user.phone_number,
 						'password': auth_user.password
-						
 					},
 					'access_token': body_json['access_token'],
 					'refresh_token': body_json['refresh_token']
