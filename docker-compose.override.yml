@@ -1,0 +1,61 @@
+version: "3.7"
+services:
+  db:
+    container_name: quick-db
+    image: postgres:12.6
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=data
+    volumes:
+      - db-data:/var/lib/postgresql/data/
+    networks:
+      - n_backend
+    ports:
+      - 5432:5432
+    restart: 'no'
+  dbadmin:
+    container_name: quick-dbadmin
+    image: dpage/pgadmin4:5.2
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@quick.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 8181:80
+    networks:
+      - n_backend
+    links:
+      - db
+    depends_on:
+      - db
+  api:
+    container_name: quick-api
+    image: quick_api
+    build:
+      context: ./api/
+    env_file: api/.env
+    volumes:
+      - ./api/staticfiles:/home/django/src/staticfiles
+      - ./api/mediafiles:/home/django/src/mediafiles
+    networks:
+      - n_backend
+    links:
+      - db
+    depends_on:
+      - db
+    restart: 'no'
+  proxy:
+    container_name: quick-proxy
+    image: quick_proxy
+    build:
+      context: ./proxy/
+    volumes:
+      - ./api/staticfiles:/srv/staticfiles
+      - ./api/mediafiles:/srv/mediafiles
+    ports:
+      - 5500:80
+    restart: 'no'
+volumes:
+  db-data:
+networks:
+  n_backend:

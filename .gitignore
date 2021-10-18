@@ -1,0 +1,13 @@
+# Python garbage
+*.pyc
+
+# Django project
+staticfiles/
+mediafiles/
+
+# Environment variables
+api/.env
+./.idea/
+.idea
+.devcontainer
+.vscode

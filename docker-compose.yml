@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  api:
+    networks:
+      - n_reverse_proxy
+  proxy:
+    networks:
+      - n_reverse_proxy
+    links:
+      - api
+networks:
+  n_reverse_proxy:
+

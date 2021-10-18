@@ -1,0 +1,10 @@
+Django==3.2
+django-oauth-toolkit==1.5.0 # Toolkit for implementing OAuth2 authentication
+dj-database-url==0.5.0 # For getting DB configuration from config URL
+djangorestframework==3.12.4 # Toolkit for a complete REST API
+psycopg2==2.8.6 # Client for connecting to Postgres database
+gunicorn==20.1.0 # Server that runs the django app
+tblib==1.7.0
+
+
+
